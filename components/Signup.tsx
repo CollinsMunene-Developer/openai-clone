@@ -140,7 +140,7 @@ const AuthForm = () => {
 
       <div className="align-center justify-center flex gap-6">
         <Separator className="w-1/3 text-xl" />
-        <p className="text-xl">OR</p>
+        <p className="">OR</p>
         <Separator className="w-1/3" />
       </div>
 
