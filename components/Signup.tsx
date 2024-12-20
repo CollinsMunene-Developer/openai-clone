@@ -1,4 +1,3 @@
-// AuthForm.tsx
 "use client";
 import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -38,12 +37,7 @@ const AuthForm = () => {
   const { 
     isLogin, 
     setIsLogin, 
-    emailSubmitted, 
-    setEmailSubmitted,
-    email,
-    setEmail,
-    getTitle,
-    getButtonText
+    getTitle
   } = useAuth();
   
   const [showPassword, setShowPassword] = useState(false);
@@ -51,26 +45,29 @@ const AuthForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: email,
+      email: "",
       password: "",
     },
+    mode: "onChange"
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    if (!emailSubmitted) {
-      setEmail(values.email);
-      setEmailSubmitted(true);
-      // Reset form with the email value retained
-      form.reset({ email: values.email, password: "" });
-    } else {
-      // Handle final form submission (both email and password)
-      console.log(values);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      // Handle authentication based on isLogin state
+      if (isLogin) {
+        console.log("Logging in with:", values);
+        // Add your login logic here
+      } else {
+        console.log("Signing up with:", values);
+        // Add your signup logic here
+      }
+    } catch (error) {
+      console.error('Authentication error:', error);
     }
-  }
+  };
 
   const toggleAuthMode = () => {
     setIsLogin(!isLogin);
-    setEmailSubmitted(false);
     form.reset();
   };
 
@@ -87,42 +84,50 @@ const AuthForm = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormControl className="text-gray-400 text-2xl">
+                  <FormControl>
                     <Input
-                      placeholder="Email address* "
+                      placeholder="Email address*"
                       {...field}
                       className="w-full font-bold text-xl max-w-4xl h-14 border-green-400"
-                      disabled={emailSubmitted}
                     />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            {emailSubmitted && (
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl className="text-gray-400 text-2xl">
+            
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <div className="relative">
                       <Input
                         type={showPassword ? "text" : "password"}
-                        placeholder="Password* "
+                        placeholder="Password*"
                         {...field}
                         className="w-full text-xl font-bold h-14 max-w-4xl border-green-400"
                       />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            )}
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                      >
+                        {showPassword ? "Hide" : "Show"}
+                      </button>
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
             <Button 
               className="w-full max-w-3xl h-12 bg-green-400 hover:bg-green-700" 
               type="submit"
             >
-              {getButtonText()}
+              {isLogin ? "Login" : "Sign up"}
             </Button>
           </form>
         </Form>
@@ -140,7 +145,7 @@ const AuthForm = () => {
 
       <div className="align-center justify-center flex gap-6">
         <Separator className="w-1/3 text-xl" />
-        <p className="">OR</p>
+        <p className="text-xl">OR</p>
         <Separator className="w-1/3" />
       </div>
 
