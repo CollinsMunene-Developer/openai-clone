@@ -2,6 +2,7 @@ import Signup from '@/components/Signup'
 import React from 'react'
 import { Chatgptlogo } from './public/icons/icons'
 import Image from 'next/image'
+import AuthForm from '@/components/Signup'
 
 const page = () => {
   return (
@@ -11,7 +12,7 @@ const page = () => {
 
       </div>
       <div className="">
-        <Signup />
+        <AuthForm />
       </div>
       
     </div>
