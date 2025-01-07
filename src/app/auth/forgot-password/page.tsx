@@ -1,10 +1,10 @@
+import ForgotPasswordForm from '@/components/authentication/forgot-password-form'
 import React from 'react'
 
 const ForfotPasswordPage = () => {
   return (
-    <div>
-        <h1>ForfotPasswordPage</h1>
-      
+    <div className='items-center flex flex-col justify-center  w-full h-screen mt-16 ' >
+      <ForgotPasswordForm />
     </div>
   )
 }

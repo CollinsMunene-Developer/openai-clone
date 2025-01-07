@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import SignupForm from '@/components/authentication/Signup-form'
 import { ModeToggle } from '@/components/ThemeToggle'
 import React from 'react'
