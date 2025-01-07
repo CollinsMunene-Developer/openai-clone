@@ -1,5 +1,6 @@
-import { AlertDefinition } from '@/src/lib/auth/alerts/auth-alerts'
+import { AlertDefinition } from '@/lib/auth/alerts/auth-alerts'
 import { BaseFormState } from '../api/index'
+
 
 export interface AuthFormState extends BaseFormState {
   errors?: {
