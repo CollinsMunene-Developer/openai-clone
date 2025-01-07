@@ -3,20 +3,14 @@ import React, { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { Button } from "@/src/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/src/components/ui/form";
-import { Input } from "@/src/components/ui/input";
-import { Separator } from "@radix-ui/react-dropdown-menu";
-import { Alert, AlertDescription, AlertTitle } from "@/src/components/ui/alert";
+import { Button } from "../ui/button";
+
 import { CheckCircle2, AlertCircle } from "lucide-react";
 import SocialMediaButtons from "../social-media";
 import Link from "next/link";
+import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "../ui/form";
+import { Input } from "../ui/input";
 
 const SignupForm = () => {
   const formSchema = z.object({
@@ -101,12 +95,12 @@ const SignupForm = () => {
         </Alert>
       )}
 
-      <div className="align-center justify-center flex gap-4 mb-8">
+      <div className="align-center justify-center flex">
         <h1 className="text-3xl font-bold">Create Account</h1>
       </div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
           <FormField
             control={form.control}
             name="fullName"

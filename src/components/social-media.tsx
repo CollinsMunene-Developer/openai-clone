@@ -7,7 +7,7 @@ const SocialMediaButtons = () => {
     const [isLoading, setIsLoading] = useState(false);
   return (
     <div>
-              <div className="justify-center flex flex-col gap-4">
+              <div className="justify-center flex flex-col gap-2">
         <Button 
           className="w-full justify-start px-14 text-lg h-12 bg-white text-black flex gap-4 hover:bg-gray-300"
           disabled={isLoading}

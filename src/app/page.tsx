@@ -1,9 +1,8 @@
-import Signup from '@/src/components/authentication/Signup-form'
 import React from 'react'
 import { Chatgptlogo } from './public/icons/icons'
 import Image from 'next/image'
-import AuthForm from '@/src/components/authentication/Signup-form'
-import { ModeToggle } from '@/src/components/ThemeToggle'
+import { ModeToggle } from '@/components/ThemeToggle'
+import SignupForm from '@/components/authentication/Signup-form'
 
 const page = () => {
   return (
@@ -16,7 +15,7 @@ const page = () => {
 
       </div>
       <div className="">
-        <AuthForm />
+        <SignupForm />
       </div>
       
     </div>
