@@ -15,7 +15,10 @@
           "kisstkondoros.vscode-gutter-preview",
           "n3rds-inc.image",
           "jock.svg"
-        ]
+        ],
+        "workbench.colorCustomizations": {
+    "terminal.foreground": "#00FF00" // Green text
+}
       }
     },
     "postCreateCommand": "npm install && npm start",

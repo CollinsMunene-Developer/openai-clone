@@ -16,7 +16,8 @@
  *   • Ensures consistent styling and behavior
  */
 
-import { AlertType, AlertStatus, AlertVariant, type AuthAlert } from '@/src/types/ui'
+import { AlertStatus, AlertType, AlertVariant, AuthAlert, } from "@/types/ui"
+
 
 // Define the basic structure of an alert message
 export type AlertDefinition = {
