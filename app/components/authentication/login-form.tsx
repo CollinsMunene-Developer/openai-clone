@@ -9,7 +9,8 @@ import { Label } from "../ui/label"
 import { PasswordInput } from "./password-input"
 import Link from "next/link"
 import { LoginFormProps } from "../../types/ui"
-import SocialMediaButtons from "../social-media"
+import { SocialMediaButtons } from "../social-media"
+
 
 function SignInButton() {
   const { pending } = useFormStatus()

@@ -126,7 +126,7 @@ export type AuthMode = 'signin' | 'signup' | 'reset' | 'verify'
 
 // Add missing social auth button props
 export interface SocialAuthButtonProps {
-  provider: 'google' | 'github' | 'microsoft'
+  provider: 'google' | 'github' | 'microsoft' | 'apple'
   loading?: boolean
   onClick?: () => void
 }
@@ -145,5 +145,5 @@ export interface AuthAlertsProps {
 // Add SocialAuthState type here since it's used by a UI prop interface
 export interface SocialAuthState {
   redirecting: boolean
-  provider?: 'google' | 'github' | 'microsoft'
+  provider?: 'google' | 'github' | 'microsoft' | 'apple'
 } 

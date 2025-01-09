@@ -7,16 +7,20 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { PasswordInput } from "./password-input";
-import { type SignupFormProps,  } from "../../types/ui";
+import { type SignupFormProps } from "../../types/ui";
 import Link from "next/link";
-import SocialMediaButtons from "../social-media";
+import { SocialMediaButtons } from "../social-media";
 import { type AuthFormData } from "../../types/api";
+import { type SocialAuthState } from "../../types/ui";
 
 function SignUpButton() {
-  const { pending } = useFormStatus();
+  const { pending } = useFormStatus(); // Ensure this is used in a valid React environment
 
   return (
-    <Button disabled={pending} className="mt-3 bg-green-400 hover:bg-green-700">
+    <Button
+      disabled={pending}
+      className="mt-3 bg-green-400 hover:bg-green-700 text-white"
+    >
       {pending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />}
       Sign Up
     </Button>
@@ -32,8 +36,13 @@ export function SignupForm({
   passwordError,
   setPasswordError,
 }: SignupFormProps) {
+  const [socialAuthState, setSocialAuthState] = React.useState<SocialAuthState>({
+    redirecting: false,
+    provider: undefined,
+  });
+
   return (
-    <div className="w-full max-w-md justify-center flex flex-col">
+    <div className="w-full max-w-md h-full justify-center flex flex-col">
       <div className="align-center justify-center flex mb-4">
         <h1 className="text-3xl font-bold">Create Account</h1>
       </div>
@@ -153,7 +162,8 @@ export function SignupForm({
         </div>
       </div>
 
-      <SocialMediaButtons />
+      {/* Additional authentication options */}
+      <SocialMediaButtons onSocialAuthStateChange={setSocialAuthState} />
 
       <div className="mt-6 flex justify-center gap-4 text-sm">
         <p className="text-green-400 cursor-pointer">Terms of use</p>
